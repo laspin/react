@@ -280,18 +280,9 @@ header {
   margin-right: 15px;
 }
 
-
 select:disabled {
   background-color: #fbfeed;
 }
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 1129px) {
   header {
@@ -376,6 +367,3 @@ select:disabled {
     height: 60px;
   }
 }
-
-
-
