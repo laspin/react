@@ -1,8 +1,13 @@
-import React from "react";
 import { render } from "react-dom";
+import SearchParams from "./components/SearchParams";
 
 const App = () => {
-  return <h1>Yell-o</h1>
+  return (
+    <div>
+      <h1>Pets R Us</h1>
+      <SearchParams />
+    </div>
+  );
 };
 
-render(React.createElement(App), document.getElementById("root"));
+render(<App />, document.getElementById("root"));
