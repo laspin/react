@@ -1,1 +1,14 @@
-{}
+{
+  "semi": true,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "printWidth": 90,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "endOfLine": "lf",
+  "jsxSingleQuote": false,
+  "arrowParens": "avoid",
+  "parser": "babel",
+  "htmlWhitespaceSensitivity": "strict",
+  "singleAttributePerLine": true
+}
