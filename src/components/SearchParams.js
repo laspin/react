@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("");
-  const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
-  const breeds = [];
+  const [location, updateLocation] = useState("");
+  const [animal, updateAnimal] = useState("");
+  const [breed, updateBreed] = useState("");
   const [pets, setPets] = useState([]);
+  const [breeds, status] = useBreedList(animal);
 
   useEffect(() => {
     requestPets();
@@ -31,8 +32,8 @@ const SearchParams = () => {
           <input
             id="location"
             value={location}
-            placeholder="Enter location"
-            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Location"
+            onChange={(e) => updateLocation(e.target.value)}
           />
         </label>
 
@@ -42,16 +43,16 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => {
-              setAnimal(e.target.value);
-              setBreed("");
+              updateAnimal(e.target.value);
+              updateBreed("");
             }}
             onBlur={(e) => {
-              setAnimal(e.target.value);
-              setBreed("");
+              updateAnimal(e.target.value);
+              updateBreed("");
             }}
           >
             <option />
-            {ANIMALS?.map((animal) => (
+            {ANIMALS.map((animal) => (
               <option key={animal} value={animal}>
                 {animal}
               </option>
@@ -60,34 +61,36 @@ const SearchParams = () => {
         </label>
 
         <label htmlFor="breed">
-          Breed
+          Breed [{breeds?.length}]
           <select
-            disabled={!breeds.length}
+            disabled={status !== "loaded"}
             id="breed"
             value={breed}
-            onChange={(e) => setBreed(e.target.value)}
-            onBlur={(e) => setBreed(e.target.value)}
+            onChange={(e) => updateBreed(e.target.value)}
+            onBlur={(e) => updateBreed(e.target.value)}
           >
-            <option />
-            {breeds?.map((brd) => (
-              <option key={brd} value={brd}>
-                {brd}
-              </option>
-            ))}
+            {status === "loaded"
+              ? breeds.map((breed) => (
+                  <option key={breed} value={breed}>
+                    {breed}
+                  </option>
+                ))
+              : "Loading..."}
           </select>
         </label>
 
         <button>Submit</button>
-
-        {pets.map((pet) => (
-          <Pet
-            name={pet.name}
-            animal={pet.animal}
-            breed={pet.breed}
-            key={pet.id}
-          />
-        ))}
       </form>
+      {pets
+        ? pets.map((pet) => (
+            <Pet
+              name={pet.name}
+              animal={pet.animal}
+              breed={pet.breed}
+              key={pet.id}
+            />
+          ))
+        : "Loading..."}
     </div>
   );
 };
