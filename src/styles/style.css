@@ -236,6 +236,15 @@ header {
   cursor: pointer;
 }
 
+.details-info>button {
+  margin: 3rem auto 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding: 10px 20px;
+}
+
 #modal a {
   display: inline-block;
   margin-right: 15px;
@@ -308,41 +317,6 @@ select:disabled {
   text-align: center;
 }
 
-@media only screen and (max-width: 1129px) {
-  header {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    width: 95%;
-    margin: 0 auto;
-    padding: 20px 0px 0px 0px;
-  }
-
-  .search-params {
-    width: 95%;
-  }
-
-  .search-params form {
-    margin-bottom: 20px;
-  }
-
-  .search {
-    width: 55%;
-    padding: 15px;
-    border-radius: 9px;
-    float: left;
-    margin-bottom: 25px;
-  }
-
-  .details {
-    width: 95%;
-    margin: 0 auto;
-    padding: 15px;
-    border-radius: 9px;
-    margin-bottom: 25px;
-  }
-}
-
 @media only screen and (max-width: 945px) {
   .search-params {
     width: 95%;
@@ -367,4 +341,18 @@ select:disabled {
     width: 60px;
     height: 60px;
   }
+}
+
+#loading {
+  width: 100%;
+  height: 100vh;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  text-transform: scale(1.25);
+  flex-direction: column;
+  transition: all .4s linear 0ms;
 }
