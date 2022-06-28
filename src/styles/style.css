@@ -120,6 +120,7 @@ h1 {
   height: 100px;
   float: left;
   margin: 0px 20px 0px 10px;
+  cursor: pointer;
 }
 
 .pet h1 {
