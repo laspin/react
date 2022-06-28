@@ -1,14 +1,31 @@
 import { render } from 'react-dom';
 import { StrictMode } from 'react';
-import SearchParams from './components/SearchParams';
+import Home from './pages/Home';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Details from './pages/Details';
 
 const App = () => {
   return (
     <StrictMode>
-      <div className="app-wrapper">
-        <h1>Pets R Us</h1>
-        <SearchParams />
-      </div>
+      <BrowserRouter>
+        <header>
+          <h1>
+            <Link to="/">Pets R Us</Link>
+          </h1>
+        </header>
+        <div className="app-wrapper">
+          <Routes>
+            <Route
+              path="/details/:id"
+              element={<Details />}
+            />
+            <Route
+              path="/"
+              element={<Home />}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </StrictMode>
   );
 };
