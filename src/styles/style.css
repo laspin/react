@@ -357,3 +357,20 @@ select:disabled {
   flex-direction: column;
   transition: all .4s linear 0ms;
 }
+
+#error-boundary {
+  width: 100%;
+  transition: all .4s linear 0ms;
+  text-align: center;
+  margin: 3rem 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#error-boundary a {
+  color: orangered;
+  display: inline-block;
+  margin: 0 0.75rem 0.5rem;
+  text-decoration: underline;
+}

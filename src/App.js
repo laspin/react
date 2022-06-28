@@ -2,7 +2,7 @@ import { render } from 'react-dom';
 import { StrictMode } from 'react';
 import Home from './pages/Home';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Details from './pages/Details';
+import WrappedDetails from './pages/Details';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
           <Routes>
             <Route
               path="/details/:id"
-              element={<Details />}
+              element={<WrappedDetails />}
             />
             <Route
               path="/"

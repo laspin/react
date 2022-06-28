@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const URL = 'http://pets-v2.dev-apis.com/pets?id=';
 
@@ -70,4 +71,13 @@ const Details = () => {
   );
 };
 
-export default Details;
+const WrappedDetails = () => {
+  const params = useParams();
+  return (
+    <ErrorBoundary>
+      <Details params={params} />
+    </ErrorBoundary>
+  );
+};
+
+export default WrappedDetails;
