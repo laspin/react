@@ -20,7 +20,6 @@ const SearchParams = () => {
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
     const json = await res.json();
-
     setPets(json.pets);
   }
 
@@ -42,14 +41,8 @@ const SearchParams = () => {
           <select
             id="animal"
             value={animal}
-            onChange={e => {
-              updateAnimal(e.target.value);
-              updateBreed('');
-            }}
-            onBlur={e => {
-              updateAnimal(e.target.value);
-              updateBreed('');
-            }}
+            onChange={e => updateAnimal(e.target.value)}
+            onBlur={e => updateAnimal(e.target.value)}
           >
             <option />
             {ANIMALS.map(animal => (
