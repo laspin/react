@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ErrorBoundary from '../components/ErrorBoundary';
+import Modal from '../components/Modal';
 
 const URL = 'http://pets-v2.dev-apis.com/pets?id=';
 
@@ -10,6 +11,7 @@ const Details = () => {
   const [details, setDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(0);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     const doFetchDetails = async () => {
@@ -24,6 +26,8 @@ const Details = () => {
 
   const handleImageClick = event => setActive(+event.target.dataset.index); //typeof number
 
+  const handleModal = () => setModal(!modal);
+
   return (
     <>
       {loading ? (
@@ -36,7 +40,25 @@ const Details = () => {
               <h2>
                 {details.animal} — {details.breed} — {details.city}
               </h2>
-              <button>Adopt {details.name}</button>
+              {modal ? (
+                <Modal>
+                  <div>
+                    <h1>Are you really ready for this? </h1>
+                    <p>...cause you will be redirected to pets finders.com otherwise.</p>
+
+                    <button
+                      style={{ backgroundColor: 'green', margin: '1rem auto 1rem' }}
+                    >
+                      Say Yes
+                    </button>
+                    <button onClick={handleModal}>Say No</button>
+                  </div>
+                </Modal>
+              ) : (
+                ''
+              )}
+              <button onClick={handleModal}>Adopt {details.name}</button>
+
               <p>{details.description}</p>
             </div>
           </div>
